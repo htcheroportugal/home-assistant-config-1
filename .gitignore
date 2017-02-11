@@ -52,6 +52,7 @@ Temporary Items
 *.crt
 *.key
 *.pem
+.uuid
 www
 OZW_Log.txt
 home-assistant.log
