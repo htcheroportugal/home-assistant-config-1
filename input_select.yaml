@@ -1,0 +1,43 @@
+fernbedinung:
+    name: Fernbedinung
+    options:
+     - Aus
+     - Fernsehen
+     - PS4
+     - Wii spielen
+     - Smart TV
+     - SNES
+     - Musik hören
+     - Kodi
+    initial: Aus
+    icon: mdi:remote
+
+farbe_tv_ambiente:
+    name: 'Farbe TV Ambiente'
+    options:
+     - Lila
+     - Gruen
+     - Rot
+     - Blau
+     - Gelb
+     - Orange
+    initial: Orange
+    icon: mdi:format-color-fill
+
+tv_sender:
+    name: 'Sender'
+    options:
+     - RTL
+     - ORF1
+     - Kika
+     - SuperRTL
+     - Sat1
+     - Pro7
+     - RTL2
+     - ATV
+     - Puls4
+     - DMAX
+     - Pro7MAXX
+     - VOX
+    initial: RTL
+    icon: mdi:contrast-box

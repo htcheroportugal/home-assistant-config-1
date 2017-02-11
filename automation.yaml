@@ -1,0 +1,627 @@
+- alias: Denon Volume
+  trigger:
+    platform: state
+    entity_id: input_slider.volume_setpoint
+  action:
+    - service: rest_command.denon_volume
+
+#############################################################        
+#############################################################
+##################### Zeitgesteuerte Automationen ###########         
+#############################################################        
+#############################################################
+- alias: 'Strom Wohnzimmer ein'
+  trigger:
+    platform: time
+    after: '06:30:00'
+  action:
+    - service: switch.turn_on
+      entity_id: switch.mediacenter_strom
+
+- alias: 'Strom Wohnzimmer aus'
+  trigger:
+    platform: time
+    after: '23:01:00'
+  action:
+    - service: switch.turn_off
+      entity_id: switch.nas
+    - service: light.turn_off
+      entity_id: light.tv_ambiente
+    - delay: '00:03:00'
+    - service: switch.turn_off
+      entity_id: switch.mediacenter_strom
+
+
+#############################################################        
+#############################################################
+##################### TV Ambiente LED Controller ############         
+#############################################################        
+#############################################################        
+        
+- alias: 'TV Ambiente Ein'
+  trigger:
+    platform: state
+    entity_id: media_player.tv
+    state: 'on'
+  condition:
+    condition: sun
+    after: 'sunset'
+  action:
+    service:  homeassistant.turn_on
+    entity_id: light.tv_ambiente
+    
+- alias: 'TV Ambiente Aus'
+  trigger:
+    platform: state
+    entity_id: media_player.tv
+    state: 'off'
+  action:
+    - delay: '00:02:00'
+    - service:  homeassistant.turn_off
+      entity_id: light.tv_ambiente
+
+- alias: "Helligkeit TV Ambiente"
+  trigger:
+    platform: state
+    entity_id: input_slider.helligkeit_tv_ambiente
+  action:
+    - service: light.turn_on
+      data_template:
+        entity_id: light.tv_ambiente
+        brightness: '{{ trigger.to_state.state | int }}'
+
+- alias: 'TV Ambiente Lila'
+  trigger:
+    platform: state
+    entity_id: input_select.farbe_tv_ambiente
+    to: "Lila"
+  action:
+    - service: light.turn_on
+      data_template:
+        entity_id: light.tv_ambiente
+        rgb_color: [201, 21, 255]
+        brightness: '{{ states.input_slider.helligkeit_tv_ambiente.state | int }}'
+
+- alias: 'TV Ambiente Gruen'
+  trigger:
+    platform: state
+    entity_id: input_select.farbe_tv_ambiente
+    to: "Gruen"
+  action:
+    - service: light.turn_on
+      data_template:
+        entity_id: light.tv_ambiente
+        rgb_color: [0, 200, 12]
+        brightness: '{{ states.input_slider.helligkeit_tv_ambiente.state | int }}'
+
+- alias: 'TV Ambiente Rot'
+  trigger:
+    platform: state
+    entity_id: input_select.farbe_tv_ambiente
+    to: "Rot"
+  action:
+    - service: light.turn_on
+      data_template:
+        entity_id: light.tv_ambiente
+        rgb_color: [255, 0, 0]
+        brightness: '{{ states.input_slider.helligkeit_tv_ambiente.state | int }}'
+
+- alias: 'TV Ambiente Blau'
+  trigger:
+    platform: state
+    entity_id: input_select.farbe_tv_ambiente
+    to: "Blau"
+  action:
+    - service: light.turn_on
+      data_template:
+        entity_id: light.tv_ambiente
+        rgb_color: [0, 47, 255]
+        brightness: '{{ states.input_slider.helligkeit_tv_ambiente.state | int }}'
+
+- alias: 'TV Ambiente Gelb'
+  trigger:
+    platform: state
+    entity_id: input_select.farbe_tv_ambiente
+    to: "Gelb"
+  action:
+    - service: light.turn_on
+      data_template:
+        entity_id: light.tv_ambiente
+        rgb_color: [255, 255, 0]
+        brightness: '{{ states.input_slider.helligkeit_tv_ambiente.state | int }}'
+
+- alias: 'TV Ambiente Orange'
+  trigger:
+    platform: state
+    entity_id: input_select.farbe_tv_ambiente
+    to: "Orange"
+  action:
+    - service: light.turn_on
+      data_template:
+        entity_id: light.tv_ambiente
+        rgb_color: [255, 102, 0]
+        brightness: '{{ states.input_slider.helligkeit_tv_ambiente.state | int }}'
+        
+#############################################################        
+#############################################################
+##################### Fernbedinung Wohnzimmer ###############       
+#############################################################        
+############################################################# 
+
+ 
+- alias: Aus
+  trigger:
+    platform: state
+    entity_id: input_select.fernbedinung
+    to: "Aus"
+  action:
+    - service: media_player.turn_off
+      entity_id: media_player.tv
+    - service: media_player.turn_off
+      entity_id: media_player.denon
+    - service: switch.turn_off
+      entity_id: switch.alexa_bluetooth
+
+- alias: Fernsehen
+  trigger:
+    platform: state
+    entity_id: input_select.fernbedinung
+    to: "Fernsehen"
+  action:
+    - service: media_player.turn_on
+      entity_id: media_player.tv
+    - service: media_player.turn_on
+      entity_id: media_player.denon
+    - service: media_player.select_source
+      data:
+        entity_id: media_player.denon
+        source: "TV AUDIO"
+    - service: script.vierafernsehen
+    - service: switch.turn_off
+      entity_id: switch.alexa_bluetooth
+    - delay: '00:00:10'
+    - service: input_slider.select_value
+      data:
+        entity_id: input_slider.volume_setpoint
+        value: 32
+
+
+- alias: PS4
+  trigger:
+    platform: state
+    entity_id: input_select.fernbedinung
+    to: "PS4"
+  action:
+    - service: media_player.turn_on
+      entity_id: media_player.tv
+    - service: media_player.turn_on
+      entity_id: media_player.denon
+    - service: media_player.select_source
+      data:
+        entity_id: media_player.denon
+        source: PS4
+    - service: script.vieraswitchhdmi
+    - service: script.vierareturn
+    - service: switch.turn_off
+      entity_id: switch.alexa_bluetooth
+    - delay: '00:00:10'
+    - service: input_slider.select_value
+      data:
+        entity_id: input_slider.volume_setpoint
+        value: 30
+
+    
+- alias: Wii
+  trigger:
+    platform: state
+    entity_id: input_select.fernbedinung
+    to: "Wii spielen"
+  action:
+    - service: media_player.turn_on
+      entity_id: media_player.tv
+    - service: media_player.turn_on
+      entity_id: media_player.denon
+    - service: media_player.select_source
+      data:
+        entity_id: media_player.denon
+        source: Wii
+    - service: script.vieraswitchhdmi
+    - service: script.vierareturn
+    - service: switch.turn_off
+      entity_id: switch.alexa_bluetooth
+    - delay: '00:00:10'
+    - service: input_slider.select_value
+      data:
+        entity_id: input_slider.volume_setpoint
+        value: 27
+
+
+
+- alias: SNES
+  trigger:
+    platform: state
+    entity_id: input_select.fernbedinung
+    to: "SNES"
+  action:
+    - service: media_player.turn_on
+      entity_id: media_player.tv
+    - service: media_player.turn_on
+      entity_id: media_player.denon
+    - service: media_player.select_source
+      data:
+        entity_id: media_player.denon
+        source: SNES
+    - service: script.vieraswitchhdmi
+    - service: script.vierareturn
+    - service: switch.turn_off
+      entity_id: switch.alexa_bluetooth
+    - delay: '00:00:10'
+    - service: input_slider.select_value
+      data:
+        entity_id: input_slider.volume_setpoint
+        value: 27
+
+
+
+- alias: Musik
+  trigger:
+    platform: state
+    entity_id: input_select.fernbedinung
+    to: "Musik hören"
+  action:
+    - service: switch.turn_on
+      entity_id: switch.alexa_bluetooth
+    - service: media_player.turn_off
+      data_template:
+        entity_id: >
+          {%- if is_state("media_player.tv", "off") %}
+          {%- else -%}
+          media_player.tv
+          {%- endif %}
+    - service: media_player.turn_on
+      entity_id: media_player.denon
+    - service: media_player.select_source
+      data:
+        entity_id: media_player.denon
+        source: Bluetooth
+    - delay: '00:00:10'
+    - service: input_slider.select_value
+      data:
+        entity_id: input_slider.volume_setpoint
+        value: 50
+
+- alias: PC
+  trigger:
+    platform: state
+    entity_id: input_select.fernbedinung
+    to: "Kodi"
+  action:
+    - service: media_player.turn_on
+      entity_id: media_player.tv
+    - service: media_player.turn_on
+      entity_id: media_player.denon
+    - service: media_player.select_source
+      data:
+        entity_id: media_player.denon
+        source: Blu-ray
+    - service: script.vieraswitchhdmi
+    - service: script.vierareturn
+    - service: switch.turn_off
+      entity_id: switch.alexa_bluetooth
+
+
+- alias: SmartTV
+  trigger:
+    platform: state
+    entity_id: input_select.fernbedinung
+    to: "Smart TV"
+  action:
+    - service: media_player.turn_on
+      entity_id: media_player.tv
+    - service: media_player.turn_on
+      entity_id: media_player.denon
+    - service: media_player.select_source
+      data:
+        entity_id: media_player.denon
+        source: "TV AUDIO"
+    - service: script.vieraamazonvideo
+    - delay: '00:00:03'
+    - service: script.startamazonvideoapp
+    - service: switch.turn_off
+      entity_id: switch.alexa_bluetooth
+
+###################################################################
+####################### Sender Automation #########################
+###################################################################
+
+- alias: RTL
+  trigger:
+    platform: state
+    entity_id: input_select.tv_sender
+    to: "RTL"
+  action:
+    - service: script.r_t_l
+
+- alias: ORF1
+  trigger:
+    platform: state
+    entity_id: input_select.tv_sender
+    to: "ORF1"
+  action:
+    - service: script.o_r_f_eins
+
+- alias: Kika
+  trigger:
+    platform: state
+    entity_id: input_select.tv_sender
+    to: "Kika"
+  action:
+    - service: script.kika
+
+- alias: SuperRTL
+  trigger:
+    platform: state
+    entity_id: input_select.tv_sender
+    to: "SuperRTL"
+  action:
+    - service: script.superrtl
+
+- alias: Sat1
+  trigger:
+    platform: state
+    entity_id: input_select.tv_sender
+    to: "Sat1"
+  action:
+    - service: script.sat_eins
+
+- alias: Pro7
+  trigger:
+    platform: state
+    entity_id: input_select.tv_sender
+    to: "Pro7"
+  action:
+    - service: script.pro_sieben
+
+- alias: RTL2
+  trigger:
+    platform: state
+    entity_id: input_select.tv_sender
+    to: "RTL2"
+  action:
+    - service: script.rtl_zwei
+
+- alias: ATV
+  trigger:
+    platform: state
+    entity_id: input_select.tv_sender
+    to: "ATV"
+  action:
+    - service: script.a_t_v
+    
+- alias: Puls4
+  trigger:
+    platform: state
+    entity_id: input_select.tv_sender
+    to: "Puls4"
+  action:
+    - service: script.puls_vier
+
+- alias: DMAX
+  trigger:
+    platform: state
+    entity_id: input_select.tv_sender
+    to: "DMAX"
+  action:
+    - service: script.dmax
+
+- alias: Pro7MAXX
+  trigger:
+    platform: state
+    entity_id: input_select.tv_sender
+    to: "Pro7MAXX"
+  action:
+    - service: script.pro_sieben_maxx
+
+- alias: VOX
+  trigger:
+    platform: state
+    entity_id: input_select.tv_sender
+    to: "VOX"
+  action:
+    - service: script.vox
+    
+#############################################################        
+#############################################################
+########################### Alexa ###########################        
+#############################################################        
+#############################################################
+
+- alias: alexa_fernsehen
+  trigger:
+    platform: state
+    entity_id: input_boolean.fernsehen
+    to: "on"
+  action:
+    - service: input_select.select_option
+      data:
+        entity_id: input_select.fernbedinung
+        option: "Fernsehen"
+    - service: input_boolean.turn_off
+      data:
+        entity_id: input_boolean.fernsehen
+
+- alias: alexa_ps4
+  trigger:
+    platform: state
+    entity_id: input_boolean.ps4
+    to: "on"
+  action:
+    - service: input_select.select_option
+      data:
+        entity_id: input_select.fernbedinung
+        option: "PS4"
+    - service: input_boolean.turn_off
+      data:
+        entity_id: input_boolean.PS4
+
+- alias: alexa_wii
+  trigger:
+    platform: state
+    entity_id: input_boolean.wii
+    to: "on"
+  action:
+    - service: input_select.select_option
+      data:
+        entity_id: input_select.fernbedinung
+        option: "Wii spielen"
+    - service: input_boolean.turn_off
+      data:
+        entity_id: input_boolean.wii
+
+- alias: alexa_snes
+  trigger:
+    platform: state
+    entity_id: input_boolean.nintendo
+    to: "on"
+  action:
+    - service: input_select.select_option
+      data:
+        entity_id: input_select.fernbedinung
+        option: "SNES"
+    - service: input_boolean.turn_off
+      data:
+        entity_id: input_boolean.nintendo
+
+- alias: alexa_bluetooth
+  trigger:
+    platform: state
+    entity_id: input_boolean.bluetooth
+    to: "on"
+  action:
+    - service: input_select.select_option
+      data:
+        entity_id: input_select.fernbedinung
+        option: "Musik hören"
+    - service: input_boolean.turn_off
+      data:
+        entity_id: input_boolean.bluetooth
+
+- alias: alexa_kodi
+  trigger:
+    platform: state
+    entity_id: input_boolean.kodi
+    to: "on"
+  action:
+    - service: input_select.select_option
+      data:
+        entity_id: input_select.fernbedinung
+        option: "Kodi"
+    - service: input_boolean.turn_off
+      data:
+        entity_id: input_boolean.kodi
+
+- alias: alexa_heimkino_aus
+  trigger:
+    platform: state
+    entity_id: input_boolean.heimkino
+    to: "off"
+  action:
+    - service: input_select.select_option
+      data:
+        entity_id: input_select.fernbedinung
+        option: "Aus"
+    - service: input_boolean.turn_on
+      data:
+        entity_id: input_boolean.heimkino
+
+- alias: alexa_smarttv
+  trigger:
+    platform: state
+    entity_id: input_boolean.smarttv
+    to: "on"
+  action:
+    - service: input_select.select_option
+      data:
+        entity_id: input_select.fernbedinung
+        option: "Smart TV"
+    - service: input_boolean.turn_off
+      data:
+        entity_id: input_boolean.smarttv
+
+#############################################################        
+#############################################################
+#                                               Notifications                                                                     #        
+#############################################################        
+#############################################################
+
+- alias: temp_wz_low
+  trigger:
+    platform: numeric_state
+    entity_id: sensor.temperatur_wohnzimmer
+    below: 20.00
+  action:
+    service: notify.lukas
+    data_template:
+      title: "Temperatur im Wohnzimmer ist niedrig!"
+      message: "Temperatur ist {{ states.sensor.temperatur_wohnzimmer.state }} °C"
+
+- alias: temp_wz_high
+  trigger:
+    platform: numeric_state
+    entity_id: sensor.temperatur_wohnzimmer
+    above: 23.50
+  action:
+    service: notify.lukas
+    data_template:
+      title: "Temperatur im Wohnzimmer ist hoch!"
+      message: "Temperatur ist {{ states.sensor.temperatur_wohnzimmer.state }} °C"
+
+- alias: strom_wohnzimmer_aus
+  trigger:
+    platform: time
+    after: '22:55:00'
+  action:
+    service: notify.lukas
+    data_template:
+      title: "Strom im Wohnzimmer wird ausgeschaltet"
+      message: "falls du das nicht willst schalte Strom Wohnzimmer aus in der Gruppe Override aus"
+
+- alias: temp_wz_low
+  trigger:
+    platform: numeric_state
+    entity_id: sensor.temperatur_wohnzimmer
+    below: 20.00
+  action:
+    service: notify.sarah
+    data_template:
+      title: "Temperatur im Wohnzimmer ist niedrig!"
+      message: "Temperatur ist {{ states.sensor.temperatur_wohnzimmer.state }} °C"
+
+- alias: temp_wz_high
+  trigger:
+    platform: numeric_state
+    entity_id: sensor.temperatur_wohnzimmer
+    above: 23.50
+  action:
+    service: notify.sarah
+    data_template:
+      title: "Temperatur im Wohnzimmer ist hoch!"
+      message: "Temperatur ist {{ states.sensor.temperatur_wohnzimmer.state }} °C"
+
+- alias: strom_wohnzimmer_aus
+  trigger:
+    platform: time
+    after: '22:55:00'
+  action:
+    service: notify.sarah
+    data_template:
+      title: "Strom im Wohnzimmer wird ausgeschaltet"
+      message: "falls du das nicht willst schalte Strom Wohnzimmer aus in der Gruppe Override aus"
+      
+
+
+#############################################################        
+#############################################################
+#                                               Test                                                                                #        
+#############################################################        
+#############################################################

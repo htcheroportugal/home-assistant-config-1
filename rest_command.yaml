@@ -1,0 +1,2 @@
+denon_volume:
+  url: 'http://192.168.0.150/goform/formiPhoneAppDirect.xml?MV{{ states.input_slider.volume_setpoint.state | int}}'

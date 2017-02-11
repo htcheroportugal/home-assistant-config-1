@@ -45,3 +45,30 @@ $RECYCLE.BIN/
 Network Trash Folder
 Temporary Items
 .apdisk
+
+*.pid
+*.xml
+*.csr
+*.crt
+*.key
+www
+OZW_Log.txt
+home-assistant.log
+home-assistant_v2.db
+*.db-journal
+lib
+deps
+tts
+secrets.yaml
+known_devices.yaml
+*.conf
+plex.conf
+phue.conf
+harmony_media_room.conf
+pyozw.sqlite
+.*
+!/.gitignore
+certselfsigned
+custom_components
+www
+*.ps1

@@ -1,0 +1,13 @@
+- platform: command_line
+  command: 'ping -c 1 192.168.0.57 | grep "1 received" | wc -l'
+  name: Wii
+  sensor_class: connectivity
+  payload_on: 1
+  payload_off: 0
+
+- platform: command_line
+  command: 'ping -c 1 192.168.0.122 | grep "1 received" | wc -l'
+  name: Drucker
+  sensor_class: connectivity
+  payload_on: 1
+  payload_off: 0

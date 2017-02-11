@@ -1,0 +1,131 @@
+vierahdmi:
+  alias: 'TV ein und auf HDMI stellen'
+  sequence:
+    - alias: 'TV ein und auf HDMI stellen'
+      service: shell_command.viera_input_hdmi
+      
+sender_hoch:
+  alias: 'Sender +'
+  sequence:
+    - alias: 'Kanal hoch'
+      service: shell_command.viera_channel_up
+      
+sender_runter:
+  alias: 'Sender -'
+  sequence:
+    - alias: 'Kanal runter'
+      service: shell_command.viera_channel_down
+      
+vierapoweron:
+  alias: 'TV ein'
+  sequence:
+    - alias: 'TV ein'
+      service: shell_command.viera_power_on
+      
+vieratv:
+  alias: 'TV ein und Fernsehen'
+  sequence:
+    - alias: 'TV ein und Fernsehen'
+      service: shell_command.viera_input_tv
+      
+vierafernsehen:
+  alias: 'Fernsehen wenn TV läuft'
+  sequence:
+    - alias: 'Fernsehen wenn TV läuft'
+      service: shell_command.viera_input_tv
+      
+vieraswitchhdmi:
+  alias: 'Auf HDMI umschalten wenn TV läuft'
+  sequence:
+    - alias: 'Auf HDMI umschalten wenn TV läuft'
+      service: shell_command.viera_input_hdmi
+      
+vieraamazonvideo:
+  alias: 'Amazon Video starten'
+  sequence:
+    - alias: 'Amazon Video starten'
+      service: shell_command.viera_amazon_video
+      
+startamazonvideoapp:
+  alias: 'Amazon Video App starten'
+  sequence:
+    - alias: 'Amazon Video App starten'
+      service: shell_command.start_amazon_video
+      
+vieraenter:
+  alias: 'Viera Enter'
+  sequence:
+    - alias: 'Viera Enter'
+      service: shell_command.viera_enter
+      
+vierareturn:
+  alias: 'Viera Return'
+  sequence:
+    - alias: 'Viera Return'
+      service: shell_command.viera_return
+
+backupha:
+  alias: 'Backup HA Config'
+  sequence:
+    - alias: 'Backup'
+      service: shell_command.backupha
+
+r_t_l:
+  alias: 'rtl'
+  sequence:
+    service: shell_command.viera_rtl
+    
+o_r_f_eins:
+  alias: 'viera_orf1'
+  sequence:
+    service: shell_command.viera_orf1
+    
+kika:
+  alias: 'viera_kika'
+  sequence:
+    service: shell_command.viera_kika
+
+superrtl:
+  alias: 'viera_superrtl'
+  sequence:
+    service: shell_command.viera_superrtl
+
+sat_eins:
+  alias: 'viera_sat1'
+  sequence:
+    service: shell_command.viera_sat1
+
+pro_sieben:
+  alias: 'viera_pro7'
+  sequence:
+    service: shell_command.viera_pro7
+
+r_t_l_zwei:
+  alias: 'viera_rtl2'
+  sequence:
+    service: shell_command.viera_rtl2
+
+a_t_v:
+  alias: 'viera_atv'
+  sequence:
+    service: shell_command.viera_atv
+
+puls_vier:
+  alias: 'viera_puls4'
+  sequence:
+    service: shell_command.viera_puls4
+
+dmax:
+  alias: 'viera_dmax'
+  sequence:
+    service: shell_command.viera_dmax
+
+pro_sieben_maxx:
+  alias: 'viera_pro7maxx'
+  sequence:
+    service: shell_command.viera_pro7maxx
+
+vox:
+  alias: 'viera_vox'
+  sequence:
+    service: shell_command.viera_vox

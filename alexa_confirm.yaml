@@ -1,0 +1,14 @@
+>
+  {{ [
+  "ok",
+  "wie du wünscht",
+  "alles klar",
+  "sofort",
+  "wird erledigt",
+  "wenn du meinst",
+  "natürlich",
+  "erledigt",
+  "Kein Problem",
+  "mach ich",
+  "klaro"
+  ] | random }}

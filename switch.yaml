@@ -1,0 +1,36 @@
+- platform: command_line
+  switches:
+    playstation4:
+      command_on: 'sudo ps4-waker'
+      command_off: 'sudo ps4-waker standby'
+      command_state: 'nc -z -w 5 192.168.0.62 9295'
+
+- platform: wake_on_lan
+  mac_address: "44-94-FC-6E-61-92"
+  name: "NAS"
+  host: 192.168.0.1
+  turn_off:
+    service: shell_command.nasoff
+
+- platform: wake_on_lan
+  mac_address: "34-64-A9-CF-8C-21"
+  name: "Laptop"
+  host: 192.168.0.50
+
+- platform: mqtt
+  name: "Alexa Bluetooth"
+  state_topic: "home/sonoff/bluetooth/stat"
+  command_topic: "home/sonoff/bluetooth"
+  qos: 1
+  payload_on: "on"
+  payload_off: "off"
+  retain: true
+
+- platform: mqtt
+  name: "Mediacenter Strom"
+  state_topic: "home/sonoff/mediacenter/stat"
+  command_topic: "home/sonoff/mediacenter"
+  qos: 1
+  payload_on: "on"
+  payload_off: "off"
+  retain: true

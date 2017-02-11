@@ -1,0 +1,7 @@
+- platform: nmap_tracker
+  hosts:
+    - 192.168.0.77
+#    - 192.168.0.55
+
+- platform: owntracks
+  max_gps_accuracy: 200

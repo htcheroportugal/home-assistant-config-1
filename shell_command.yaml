@@ -1,0 +1,24 @@
+nasoff: ssh root@192.168.0.1 'shutdown'
+laptopon: sudo wakeonlan 34:64:A9:CF:8C:21
+backupha: mkdir /mnt/backup/HA$(date +"%m%d%Y-%H%M") && sudo cp -ar /home/hass/.homeassistant/ /mnt/backup/HA$(date +"%m%d%Y-%H%M")/
+viera_power_on: sudo wakeonlan 20:c6:eb:df:c5:7a
+viera_channel_down: node /home/hass/.homeassistant/viera/viera.js/chdown.js
+viera_channel_up: node /home/hass/.homeassistant/viera/viera.js/chup.js
+viera_input_hdmi: node /home/hass/.homeassistant/viera/viera.js/hdmi1_einstellen.js
+viera_input_tv: node /home/hass/.homeassistant/viera/viera.js/tv.js
+viera_amazon_video: node /home/hass/.homeassistant/viera/viera.js/amazon_video.js
+start_amazon_video: node /home/hass/.homeassistant/viera/viera.js/start_amazon_video_app.js
+viera_enter: node /home/hass/.homeassistant/viera/viera.js/enter.js
+viera_return: node /home/hass/.homeassistant/viera/viera.js/return.js
+viera_rtl: node /home/hass/.homeassistant/viera/viera.js/rtl.js
+viera_orf1: node /home/hass/.homeassistant/viera/viera.js/orf1.js
+viera_kika: node /home/hass/.homeassistant/viera/viera.js/kika.js
+viera_superrtl: node /home/hass/.homeassistant/viera/viera.js/superrtl.js
+viera_sat1: node /home/hass/.homeassistant/viera/viera.js/sat1.js
+viera_pro7: node /home/hass/.homeassistant/viera/viera.js/pro7.js
+viera_rtl2: node /home/hass/.homeassistant/viera/viera.js/rtl2.js
+viera_atv: node /home/hass/.homeassistant/viera/viera.js/atv.js
+viera_puls4: node /home/hass/.homeassistant/viera/viera.js/puls4.js
+viera_dmax: node /home/hass/.homeassistant/viera/viera.js/dmax.js
+viera_pro7maxx: node /home/hass/.homeassistant/viera/viera.js/pro7maxx.js
+viera_vox: node /home/hass/.homeassistant/viera/viera.js/vox.js

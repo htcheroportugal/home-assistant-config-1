@@ -1,0 +1,116 @@
+################################
+############ TABS################
+################################
+default_view:
+  view: yes
+  entities:
+    - group.devices
+    - group.strom
+    - group.override
+    - group.multimedia
+    - group.neato
+    - media_player.tv
+    - media_player.denon    
+    - device_tracker.608334beb68a
+    - device_tracker.ha_lukasp9lite
+    - sun.sun
+
+Klima:
+  name: Klima
+  view: yes
+  entities:
+    - group.RaumKlima
+    - group.wetter
+    - device_tracker.608334beb68a
+    - device_tracker.ha_lukasp9lite
+    - sun.sun
+
+Tools:
+  name: Tools
+  view: yes
+  entities:
+#    - group.speedtest
+    - script.backupha
+    - device_tracker.608334beb68a
+    - device_tracker.ha_lukasp9lite
+    - sun.sun
+
+################################
+############ Groups###############
+################################
+
+neato:
+  name: Neato
+  entities:
+    - switch.neato_clean
+    - sensor.neato_battery
+    - sensor.neato_status
+
+wohnzimmer:
+  name: Wohnzimmer
+  entities:
+    - media_player.tv
+    - media_player.denon
+
+devices:
+  name: Devices
+  entities:
+    - switch.nas  
+    - switch.laptop
+    - binary_sensor.drucker
+
+strom:
+  name: Strom
+  entities:
+    - switch.alexa_bluetooth
+    - switch.mediacenter_strom
+
+
+override:
+  name: Override
+  entities:
+    - automation.strom_wohnzimmer_aus
+    - automation.strom_wohnzimmer_ein
+#speedtest:
+#  name: Speedtest
+#  entities:
+#    - sensor.speedtest_download
+#    - sensor.speedtest_upload
+#    - sensor.speedtest_ping
+
+wetter:
+  name: Wetter
+  entities:
+    - sensor.pws_weather
+    - sensor.pws_temp_c
+    - sensor.pws_feelslike_c
+    - sensor.pws_pressure_mb
+    - sensor.pws_relative_humidity
+    - sensor.pws_visibility_km
+    - sensor.pws_wind_dir
+    - sensor.pws_wind_kph
+    - sensor.pws_alerts
+
+Multimedia:
+  name: Multimedia
+  entities:
+    - input_select.fernbedinung
+    - input_select.tv_sender
+    - input_slider.volume_setpoint
+    - script.vierachup
+    - script.vierachdown
+    - script.vieraenter
+    - script.vierareturn
+    - light.tv_ambiente
+    - input_slider.helligkeit_tv_ambiente
+    - input_select.farbe_tv_ambiente
+    - binary_sensor.wii
+    - switch.playstation4
+
+RaumKlima:
+  name: "Raum Klima"
+  entities:
+    - sensor.temperatur_wohnzimmer
+    - sensor.luftfeuchte_wohnzimmer
+    - sensor.temperatur_esszimmer
+    - sensor.luftfeuchte_esszimmer

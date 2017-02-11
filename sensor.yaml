@@ -1,0 +1,47 @@
+- platform: yr
+ 
+#- platform: speedtest
+#  minute:
+#    - 30
+#  monitored_conditions:
+#      - ping
+#      - download
+#      - upload
+
+- platform: wunderground
+  api_key: !secret wundergroud_api_key
+  pws_id: IAIGEN4
+  monitored_conditions:
+    - weather
+    - temp_c
+    - station_id
+    - feelslike_c
+    - wind_kph
+    - pressure_mb
+    - wind_dir
+    - relative_humidity
+    - visibility_km
+
+- platform: mqtt
+  name: "Temperatur Wohnzimmer"
+  state_topic: "sensorwz/temperature"
+  qos: 0
+  unit_of_measurement: "ºC"
+
+- platform: mqtt
+  name: "Luftfeuchte Wohnzimmer"
+  state_topic: "sensorwz/humidity"
+  qos: 0
+  unit_of_measurement: "%"
+
+- platform: mqtt
+  state_topic: 'sensor/esszimmer/dht22'
+  name: "Temperatur Esszimmer"
+  unit_of_measurement: '°C'
+  value_template: '{{ value_json.temperature }}'
+    
+- platform: mqtt
+  state_topic: 'sensor/esszimmer/dht22'
+  name: "Luftfeuchte Esszimmer"
+  unit_of_measurement: '%'
+  value_template: '{{ value_json.humidity }}'

@@ -1,0 +1,31 @@
+fernsehen:
+  name: fernsehen
+  initial: off
+
+ps4:
+  name: ps4
+  initial: off
+
+wii:
+  name: wii
+  initial: off
+
+nintendo:
+  name: nintendo
+  initial: off
+
+bluetooth:
+  name: bluetooth
+  initial: off
+
+kodi:
+  name: kodi
+  initial: off
+
+heimkino:
+  name: heimkino
+  initial: on
+
+smarttv:
+  name: smarttv
+  initial: off

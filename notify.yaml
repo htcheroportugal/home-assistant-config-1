@@ -1,0 +1,9 @@
+- name: lukas
+  platform: telegram
+  api_key: !secret telegram_api_password_lukas
+  chat_id: !secret telegram_chat_id_lukas
+
+- name: sarah
+  platform: telegram
+  api_key: !secret telegram_api_password_sarah
+  chat_id: !secret telegram_chat_id_sarah
