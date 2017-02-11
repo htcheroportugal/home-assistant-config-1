@@ -1,144 +1,130 @@
-sensor.speedtest_download:
+- entity_id: sensor.speedtest_download
   icon: mdi:download
   
-sensor.speedtest_upload:
+- entity_id: sensor.speedtest_upload
   icon: mdi:upload
   
-sensor.speedtest_ping:
+- entity_id: sensor.speedtest_ping
   icon: mdi:timelapse
   
-switch.playstation4:
+- entity_id: switch.playstation4
   icon: mdi:gamepad-variant
   friendly_name: 'Playstation 4'
   emulated_hue: false
   
-switch.laptop:
+- entity_id: switch.laptop
   icon: mdi:laptop-windows
   
-script.backupha:
+- entity_id: script.backupha
   icon: mdi:harddisk
   
-sensor.pws_temp_c:
+- entity_id: sensor.pws_temp_c
   icon: mdi:temperature-celsius
   friendly_name: 'Temperatur:'
   
-sensor.pws_feelslike_c:
+- entity_id: sensor.pws_feelslike_c
   friendly_name: 'Gefühlte Temperatur:'
   
-sensor.pws_pressure_mb:
+- entity_id: sensor.pws_pressure_mb
   friendly_name: 'Luftdruck:'
   icon: mdi:arrow-compress-all
   
-sensor.pws_relative_humidity:
+- entity_id: sensor.pws_relative_humidity
   friendly_name: 'Luftfeuchte:'
   icon: mdi:water-percent
   
-sensor.pws_visibility_km:
+- entity_id: sensor.pws_visibility_km
   friendly_name: 'Sichtweite:'
   icon: mdi:tree
   
-sensor.pws_wind_dir:
+- entity_id: sensor.pws_wind_dir
   friendly_name: 'Windrichtung:'
   icon: mdi:weather-windy-variant
   
-sensor.pws_wind_kph:
+- entity_id: sensor.pws_wind_kph
   friendly_name: 'Windstärke'
   icon: mdi:weather-windy
   
-sensor.pws_alerts:
+- entity_id: sensor.pws_alerts
   friendly_name: 'Wetter Alarm'
   icon: mdi:traffic-light
   
-sensor.pws_weather:
+- entity_id: sensor.pws_weather
   friendly_name: 'Wetter:'
   
-binary_sensor.wii:
+- entity_id: binary_sensor.wii
   icon: mdi:wii
   
-binary_sensor.drucker:
+- entity_id: binary_sensor.drucker
   icon: mdi:printer
   
-sensor.temperatur_wohnzimmer:
+- entity_id: sensor.temperatur_wohnzimmer
   icon: mdi:temperature-celsius
   
-sensor.luftfeuchte_wohnzimmer:
+- entity_id: sensor.luftfeuchte_wohnzimmer
   icon: mdi:water-percent
 
-sensor.temperatur_esszimmer:
+- entity_id: sensor.temperatur_esszimmer
   icon: mdi:temperature-celsius
   
-sensor.luftfeuchte_esszimmer:
+- entity_id: sensor.luftfeuchte_esszimmer
   icon: mdi:water-percent
-  
-script.vierachup:
+
+- entity_id: script.viera*
+  emulated_hue: false
+
+- entity_id: script.vierachup
   icon: mdi:arrow-up-bold-circle
   emulated_hue: false
   
-script.vierachdown:
+- entity_id: script.vierachdown
   icon: mdi:arrow-down-bold-circle
   emulated_hue: false
   
-switch.nas:
+- entity_id: switch.nas
   icon: mdi:server-network
 
-media_player.denon:
+- entity_id: media_player.denon
   emulated_hue_name: "Verstärker"
 
-media_player.tv:
+- entity_id: media_player.tv
   emulated_hue_name: "Fernseher"
 
-script.vierafernsehen:
-  emulated_hue: false
-
-script.vieraswitchhdmi:
-  emulated_hue: false
-
-script.vieratv:
-  emulated_hue: false
-
-script.vierapoweron:
-  emulated_hue: false
-
-script.vierahdmi:
-  emulated_hue: false
   
-input_boolean.musik_hören:
+- entity_id: input_boolean.musik_hören
   emulated_hue_name: "Bluetooth"
 
-input_boolean.smarttv:
+- entity_id: input_boolean.smarttv
   emulated_hue_name: "Prime"
-  
-script.vieraamazonvideo:
-  emulated_hue: false
 
-script.vierareturn:
+- entity_id: script.vierareturn
   emulated_hue: false
   icon: mdi:keyboard-return
 
-script.vieraenter:
+- entity_id: script.vieraenter
   emulated_hue: false
   icon: mdi:arrow-right-bold-circle
   
-script.startamazonvideoapp:
+- entity_id: script.startamazonvideoapp
   emulated_hue: false
 
-input_slider.helligkeit_tv_ambiente:
+- entity_id: input_slider.helligkeit_tv_ambiente
   icon: mdi:brightness-6
 
-automation.strom_wohnzimmer_ein:
+- entity_id: automation.strom_wohnzimmer_ein
   icon: mdi:power
 
-automation.strom_wohnzimmer_aus:
+- entity_id: automation.strom_wohnzimmer_aus
   icon: mdi:power
 
-switch.neato_clean:
+- entity_id: switch.neato_clean
   friendly_name: Saugen
   icon: mdi:rotate-3d
 
-sensor.neato_battery:
+- entity_id: sensor.neato_battery
   friendly_name: Akkustand
   icon: mdi:battery-charging
 
-sensor.neato_status:
+- entity_id: sensor.neato_status
   friendly_name: Status
   icon: mdi:pulse

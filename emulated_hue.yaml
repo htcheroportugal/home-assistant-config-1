@@ -3,6 +3,6 @@ host_ip: 192.168.0.58
 exposed_domains:
   - light
   - switch
-  - script
+#  - script
   - media_player
   - input_boolean
