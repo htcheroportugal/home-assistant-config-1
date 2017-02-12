@@ -113,9 +113,11 @@
 
 - entity_id: automation.strom_wohnzimmer_ein
   icon: mdi:power
+  friendly_name: 'Strom Wohzimmer automatisch ein'
 
 - entity_id: automation.strom_wohnzimmer_aus
   icon: mdi:power
+  friendly_name: 'Strom Wohzimmer automatisch aus'
 
 - entity_id: switch.neato_clean
   friendly_name: Saugen

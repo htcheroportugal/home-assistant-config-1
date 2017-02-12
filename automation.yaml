@@ -584,7 +584,7 @@
     service: notify.lukas
     data_template:
       title: "Strom im Wohnzimmer wird ausgeschaltet"
-      message: "falls du das nicht willst schalte Strom Wohnzimmer aus in der Gruppe Override aus"
+      message: "falls du das nicht willst schalte Strom Wohnzimmer automatisch aus in der Gruppe Override aus"
 
 - alias: temp_wz_low
   trigger:
@@ -616,7 +616,7 @@
     service: notify.sarah
     data_template:
       title: "Strom im Wohnzimmer wird ausgeschaltet"
-      message: "falls du das nicht willst schalte Strom Wohnzimmer aus in der Gruppe Override aus"
+      message: "falls du das nicht willst schalte Strom Wohnzimmer automatisch aus in der Gruppe Override aus"
       
 
 
