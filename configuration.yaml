@@ -17,8 +17,8 @@ zone:
   name: Home
   latitude: !secret home_lat
   longitude: !secret home_long
-  radius: 100
-  icon: mdi:account-multiple
+  radius: 150
+  icon: mdi:home-variant
 
 zone 2:
   name: Arbeit
@@ -33,6 +33,13 @@ zone 3:
   longitude: !secret moos_long
   radius: 100
   icon: mdi:face
+
+zone 4:
+  name: Billa
+  latitude: !secret billa_lat
+  longitude: !secret billa_long
+  radius: 100
+  icon: mdi:weight
 
 # Enables the frontend
 frontend:
@@ -93,9 +100,9 @@ logger:
 #notset
 
   default: error
-  logs:
-    homeassistant.components.rest_command: debug
-    homeassistant.components.alexa: debug
+#  logs:
+#    homeassistant.components.rest_command: debug
+
 # Track the sun
 sun:
 

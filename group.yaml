@@ -11,7 +11,7 @@ default_view:
     - group.neato
     - media_player.tv
     - media_player.denon    
-    - device_tracker.608334beb68a
+    - device_tracker.ha_sarahp9lite
     - device_tracker.ha_lukasp9lite
     - sun.sun
 
@@ -21,7 +21,7 @@ Klima:
   entities:
     - group.RaumKlima
     - group.wetter
-    - device_tracker.608334beb68a
+    - device_tracker.ha_sarahp9lite
     - device_tracker.ha_lukasp9lite
     - sun.sun
 
@@ -31,7 +31,7 @@ Tools:
   entities:
 #    - group.speedtest
     - script.backupha
-    - device_tracker.608334beb68a
+    - device_tracker.ha_sarahp9lite
     - device_tracker.ha_lukasp9lite
     - sun.sun
 

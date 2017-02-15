@@ -11,6 +11,7 @@
 - platform: wunderground
   api_key: !secret wundergroud_api_key
   pws_id: IAIGEN4
+  lang: DL
   monitored_conditions:
     - weather
     - temp_c
