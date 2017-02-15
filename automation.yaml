@@ -580,6 +580,10 @@
   trigger:
     platform: time
     after: '22:55:00'
+  condition:
+    condition: state
+    entity_id: switch.mediacenter_strom
+    state: 'on'
   action:
     service: notify.lukas
     data_template:
@@ -612,6 +616,10 @@
   trigger:
     platform: time
     after: '22:55:00'
+  condition:
+    condition: state
+    entity_id: switch.mediacenter_strom
+    state: 'on'
   action:
     service: notify.sarah
     data_template:
