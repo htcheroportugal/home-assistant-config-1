@@ -1,0 +1,6 @@
+- alias: Denon Volume
+  trigger:
+    platform: state
+    entity_id: input_slider.volume_setpoint
+  action:
+    - service: rest_command.denon_volume

@@ -130,7 +130,7 @@ shell_command: !include shell_command.yaml
 
 script: !include script.yaml
 
-automation: !include automation.yaml
+automation: !include_dir_named automation/
 
 group: !include group.yaml
 
@@ -144,7 +144,8 @@ emulated_hue: !include emulated_hue.yaml
 
 input_boolean: !include input_boolean.yaml
 
-alexa: !include alexa.yaml
+alexa:
+  intents: !include alexa.yaml
 
 rest_command: !include rest_command.yaml
 

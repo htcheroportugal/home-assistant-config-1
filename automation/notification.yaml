@@ -1,0 +1,71 @@
+- alias: temp_wz_low
+  trigger:
+    platform: numeric_state
+    entity_id: sensor.temperatur_wohnzimmer
+    below: 20.00
+  action:
+    service: notify.lukas
+    data_template:
+      title: "Temperatur im Wohnzimmer ist niedrig!"
+      message: "Temperatur ist {{ states.sensor.temperatur_wohnzimmer.state }} °C"
+
+- alias: temp_wz_high
+  trigger:
+    platform: numeric_state
+    entity_id: sensor.temperatur_wohnzimmer
+    above: 23.50
+  action:
+    service: notify.lukas
+    data_template:
+      title: "Temperatur im Wohnzimmer ist hoch!"
+      message: "Temperatur ist {{ states.sensor.temperatur_wohnzimmer.state }} °C"
+
+- alias: strom_wohnzimmer_aus
+  trigger:
+    platform: time
+    after: '22:55:00'
+  condition:
+    condition: state
+    entity_id: switch.mediacenter_strom
+    state: 'on'
+  action:
+    service: notify.lukas
+    data_template:
+      title: "Strom im Wohnzimmer wird ausgeschaltet"
+      message: "falls du das nicht willst schalte Strom Wohnzimmer automatisch aus in der Gruppe Override aus"
+
+- alias: temp_wz_low
+  trigger:
+    platform: numeric_state
+    entity_id: sensor.temperatur_wohnzimmer
+    below: 20.00
+  action:
+    service: notify.sarah
+    data_template:
+      title: "Temperatur im Wohnzimmer ist niedrig!"
+      message: "Temperatur ist {{ states.sensor.temperatur_wohnzimmer.state }} °C"
+
+- alias: temp_wz_high
+  trigger:
+    platform: numeric_state
+    entity_id: sensor.temperatur_wohnzimmer
+    above: 23.50
+  action:
+    service: notify.sarah
+    data_template:
+      title: "Temperatur im Wohnzimmer ist hoch!"
+      message: "Temperatur ist {{ states.sensor.temperatur_wohnzimmer.state }} °C"
+
+- alias: strom_wohnzimmer_aus
+  trigger:
+    platform: time
+    after: '22:55:00'
+  condition:
+    condition: state
+    entity_id: switch.mediacenter_strom
+    state: 'on'
+  action:
+    service: notify.sarah
+    data_template:
+      title: "Strom im Wohnzimmer wird ausgeschaltet"
+      message: "falls du das nicht willst schalte Strom Wohnzimmer automatisch aus in der Gruppe Override aus"

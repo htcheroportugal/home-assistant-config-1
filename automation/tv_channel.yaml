@@ -1,0 +1,95 @@
+- alias: RTL
+  trigger:
+    platform: state
+    entity_id: input_select.tv_sender
+    to: "RTL"
+  action:
+    - service: script.r_t_l
+
+- alias: ORF1
+  trigger:
+    platform: state
+    entity_id: input_select.tv_sender
+    to: "ORF1"
+  action:
+    - service: script.o_r_f_eins
+
+- alias: Kika
+  trigger:
+    platform: state
+    entity_id: input_select.tv_sender
+    to: "Kika"
+  action:
+    - service: script.kika
+
+- alias: SuperRTL
+  trigger:
+    platform: state
+    entity_id: input_select.tv_sender
+    to: "SuperRTL"
+  action:
+    - service: script.superrtl
+
+- alias: Sat1
+  trigger:
+    platform: state
+    entity_id: input_select.tv_sender
+    to: "Sat1"
+  action:
+    - service: script.sat_eins
+
+- alias: Pro7
+  trigger:
+    platform: state
+    entity_id: input_select.tv_sender
+    to: "Pro7"
+  action:
+    - service: script.pro_sieben
+
+- alias: RTL2
+  trigger:
+    platform: state
+    entity_id: input_select.tv_sender
+    to: "RTL2"
+  action:
+    - service: script.rtl_zwei
+
+- alias: ATV
+  trigger:
+    platform: state
+    entity_id: input_select.tv_sender
+    to: "ATV"
+  action:
+    - service: script.a_t_v
+    
+- alias: Puls4
+  trigger:
+    platform: state
+    entity_id: input_select.tv_sender
+    to: "Puls4"
+  action:
+    - service: script.puls_vier
+
+- alias: DMAX
+  trigger:
+    platform: state
+    entity_id: input_select.tv_sender
+    to: "DMAX"
+  action:
+    - service: script.dmax
+
+- alias: Pro7MAXX
+  trigger:
+    platform: state
+    entity_id: input_select.tv_sender
+    to: "Pro7MAXX"
+  action:
+    - service: script.pro_sieben_maxx
+
+- alias: VOX
+  trigger:
+    platform: state
+    entity_id: input_select.tv_sender
+    to: "VOX"
+  action:
+    - service: script.vox

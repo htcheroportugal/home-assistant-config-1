@@ -1,32 +1,31 @@
-intents:
-  startescript:
-    action:
-      service: script.turn_on
-      data_template:
-        entity_id: script.{{ Script | replace(" ", "_") | replace(".","") }}
-    speech:
-      type: plaintext
-      text: !include alexa_confirm.yaml
+startescript:
+  action:
+    service: script.turn_on
+    data_template:
+      entity_id: script.{{ Script | replace(" ", "_") | replace(".","") }}
+  speech:
+    type: plaintext
+    text: !include alexa_confirm.yaml
 
-  FragNachTemperatur:
-    speech:
-      type: plaintext
-      text: >
-        die temperatur im wohzimmer beträgt {{states.sensor.temperatur_wohnzimmer.state | float | replace(".",",")}} grad und im esszimmer {{states.sensor.temperatur_esszimmer.state  | float | replace(".",",")}} grad. Draussen hat es {{states.sensor.pws_temp_c.state | float | replace(".",",")}} grad.
+FragNachTemperatur:
+  speech:
+    type: plaintext
+    text: >
+      die temperatur im wohzimmer beträgt {{states.sensor.temperatur_wohnzimmer.state | float | replace(".",",")}} grad und im esszimmer {{states.sensor.temperatur_esszimmer.state  | float | replace(".",",")}} grad. Draussen hat es {{states.sensor.pws_temp_c.state | float | replace(".",",")}} grad.
 
-  VolumeDenon:
-    action:
-      service: input_slider.select_value
-      data_template:
-        entity_id: input_slider.volume_setpoint
-        value: >
-         {%-  set n = volume | int -%}
-         {{ n }}
+VolumeDenon:
+  action:
+    service: input_slider.select_value
+    data_template:
+      entity_id: input_slider.volume_setpoint
+      value: >
+       {%-  set n = volume | int -%}
+       {{ n }}
 
-  Botvac:
-    action:
-      service: switch.turn_on
-      entity_id: switch.neato_clean
-    speech:
-      type: plaintext
-      text: !include alexa_confirm.yaml
+Botvac:
+  action:
+    service: switch.turn_on
+    entity_id: switch.neato_clean
+  speech:
+    type: plaintext
+    text: !include alexa_confirm.yaml

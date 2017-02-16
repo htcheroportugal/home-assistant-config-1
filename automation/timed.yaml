@@ -1,0 +1,20 @@
+- alias: 'Strom Wohnzimmer ein'
+  trigger:
+    platform: time
+    after: '06:30:00'
+  action:
+    - service: switch.turn_on
+      entity_id: switch.mediacenter_strom
+
+- alias: 'Strom Wohnzimmer aus'
+  trigger:
+    platform: time
+    after: '23:01:00'
+  action:
+    - service: switch.turn_off
+      entity_id: switch.nas
+    - service: light.turn_off
+      entity_id: light.tv_ambiente
+    - delay: '00:03:00'
+    - service: switch.turn_off
+      entity_id: switch.mediacenter_strom

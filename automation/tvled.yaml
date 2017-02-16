@@ -1,0 +1,103 @@
+- alias: 'TV Ambiente Ein'
+  trigger:
+    platform: state
+    entity_id: media_player.tv
+    state: 'on'
+  condition:
+    condition: sun
+    after: 'sunset'
+  action:
+    service:  homeassistant.turn_on
+    entity_id: light.tv_ambiente
+    
+- alias: 'TV Ambiente Aus'
+  trigger:
+    platform: state
+    entity_id: media_player.tv
+    state: 'off'
+  action:
+    - delay: '00:02:00'
+    - service:  homeassistant.turn_off
+      entity_id: light.tv_ambiente
+
+- alias: "Helligkeit TV Ambiente"
+  trigger:
+    platform: state
+    entity_id: input_slider.helligkeit_tv_ambiente
+  action:
+    - service: light.turn_on
+      data_template:
+        entity_id: light.tv_ambiente
+        brightness: '{{ trigger.to_state.state | int }}'
+
+- alias: 'TV Ambiente Lila'
+  trigger:
+    platform: state
+    entity_id: input_select.farbe_tv_ambiente
+    to: "Lila"
+  action:
+    - service: light.turn_on
+      data_template:
+        entity_id: light.tv_ambiente
+        rgb_color: [201, 21, 255]
+        brightness: '{{ states.input_slider.helligkeit_tv_ambiente.state | int }}'
+
+- alias: 'TV Ambiente Gruen'
+  trigger:
+    platform: state
+    entity_id: input_select.farbe_tv_ambiente
+    to: "Gruen"
+  action:
+    - service: light.turn_on
+      data_template:
+        entity_id: light.tv_ambiente
+        rgb_color: [0, 200, 12]
+        brightness: '{{ states.input_slider.helligkeit_tv_ambiente.state | int }}'
+
+- alias: 'TV Ambiente Rot'
+  trigger:
+    platform: state
+    entity_id: input_select.farbe_tv_ambiente
+    to: "Rot"
+  action:
+    - service: light.turn_on
+      data_template:
+        entity_id: light.tv_ambiente
+        rgb_color: [255, 0, 0]
+        brightness: '{{ states.input_slider.helligkeit_tv_ambiente.state | int }}'
+
+- alias: 'TV Ambiente Blau'
+  trigger:
+    platform: state
+    entity_id: input_select.farbe_tv_ambiente
+    to: "Blau"
+  action:
+    - service: light.turn_on
+      data_template:
+        entity_id: light.tv_ambiente
+        rgb_color: [0, 47, 255]
+        brightness: '{{ states.input_slider.helligkeit_tv_ambiente.state | int }}'
+
+- alias: 'TV Ambiente Gelb'
+  trigger:
+    platform: state
+    entity_id: input_select.farbe_tv_ambiente
+    to: "Gelb"
+  action:
+    - service: light.turn_on
+      data_template:
+        entity_id: light.tv_ambiente
+        rgb_color: [255, 255, 0]
+        brightness: '{{ states.input_slider.helligkeit_tv_ambiente.state | int }}'
+
+- alias: 'TV Ambiente Orange'
+  trigger:
+    platform: state
+    entity_id: input_select.farbe_tv_ambiente
+    to: "Orange"
+  action:
+    - service: light.turn_on
+      data_template:
+        entity_id: light.tv_ambiente
+        rgb_color: [255, 102, 0]
+        brightness: '{{ states.input_slider.helligkeit_tv_ambiente.state | int }}'

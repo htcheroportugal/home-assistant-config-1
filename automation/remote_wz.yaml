@@ -1,0 +1,180 @@
+- alias: Aus
+  trigger:
+    platform: state
+    entity_id: input_select.fernbedinung
+    to: "Aus"
+  action:
+    - service: media_player.turn_off
+      entity_id: media_player.tv
+    - service: media_player.turn_off
+      entity_id: media_player.denon
+    - service: switch.turn_off
+      entity_id: switch.alexa_bluetooth
+
+- alias: Fernsehen
+  trigger:
+    platform: state
+    entity_id: input_select.fernbedinung
+    to: "Fernsehen"
+  action:
+    - service: media_player.turn_on
+      entity_id: media_player.tv
+    - service: media_player.turn_on
+      entity_id: media_player.denon
+    - service: media_player.select_source
+      data:
+        entity_id: media_player.denon
+        source: "TV AUDIO"
+    - service: script.vierafernsehen
+    - service: switch.turn_off
+      entity_id: switch.alexa_bluetooth
+    - delay: '00:00:10'
+    - service: input_slider.select_value
+      data:
+        entity_id: input_slider.volume_setpoint
+        value: 32
+
+
+- alias: PS4
+  trigger:
+    platform: state
+    entity_id: input_select.fernbedinung
+    to: "PS4"
+  action:
+    - service: media_player.turn_on
+      entity_id: media_player.tv
+    - service: media_player.turn_on
+      entity_id: media_player.denon
+    - service: media_player.select_source
+      data:
+        entity_id: media_player.denon
+        source: PS4
+    - service: script.vieraswitchhdmi
+    - service: script.vierareturn
+    - service: switch.turn_off
+      entity_id: switch.alexa_bluetooth
+    - delay: '00:00:10'
+    - service: input_slider.select_value
+      data:
+        entity_id: input_slider.volume_setpoint
+        value: 30
+
+    
+- alias: Wii
+  trigger:
+    platform: state
+    entity_id: input_select.fernbedinung
+    to: "Wii spielen"
+  action:
+    - service: media_player.turn_on
+      entity_id: media_player.tv
+    - service: media_player.turn_on
+      entity_id: media_player.denon
+    - service: media_player.select_source
+      data:
+        entity_id: media_player.denon
+        source: Wii
+    - service: script.vieraswitchhdmi
+    - service: script.vierareturn
+    - service: switch.turn_off
+      entity_id: switch.alexa_bluetooth
+    - delay: '00:00:10'
+    - service: input_slider.select_value
+      data:
+        entity_id: input_slider.volume_setpoint
+        value: 27
+
+
+
+- alias: SNES
+  trigger:
+    platform: state
+    entity_id: input_select.fernbedinung
+    to: "SNES"
+  action:
+    - service: media_player.turn_on
+      entity_id: media_player.tv
+    - service: media_player.turn_on
+      entity_id: media_player.denon
+    - service: media_player.select_source
+      data:
+        entity_id: media_player.denon
+        source: SNES
+    - service: script.vieraswitchhdmi
+    - service: script.vierareturn
+    - service: switch.turn_off
+      entity_id: switch.alexa_bluetooth
+    - delay: '00:00:10'
+    - service: input_slider.select_value
+      data:
+        entity_id: input_slider.volume_setpoint
+        value: 27
+
+
+
+- alias: Musik
+  trigger:
+    platform: state
+    entity_id: input_select.fernbedinung
+    to: "Musik hören"
+  action:
+    - service: switch.turn_on
+      entity_id: switch.alexa_bluetooth
+    - service: media_player.turn_off
+      data_template:
+        entity_id: >
+          {%- if is_state("media_player.tv", "off") %}
+          {%- else -%}
+          media_player.tv
+          {%- endif %}
+    - service: media_player.turn_on
+      entity_id: media_player.denon
+    - service: media_player.select_source
+      data:
+        entity_id: media_player.denon
+        source: Bluetooth
+    - delay: '00:00:10'
+    - service: input_slider.select_value
+      data:
+        entity_id: input_slider.volume_setpoint
+        value: 50
+
+- alias: PC
+  trigger:
+    platform: state
+    entity_id: input_select.fernbedinung
+    to: "Kodi"
+  action:
+    - service: media_player.turn_on
+      entity_id: media_player.tv
+    - service: media_player.turn_on
+      entity_id: media_player.denon
+    - service: media_player.select_source
+      data:
+        entity_id: media_player.denon
+        source: Blu-ray
+    - service: script.vieraswitchhdmi
+    - service: script.vierareturn
+    - service: switch.turn_off
+      entity_id: switch.alexa_bluetooth
+
+
+- alias: SmartTV
+  trigger:
+    platform: state
+    entity_id: input_select.fernbedinung
+    to: "Smart TV"
+  action:
+    - service: media_player.turn_on
+      entity_id: media_player.tv
+    - service: media_player.turn_on
+      entity_id: media_player.denon
+    - service: media_player.select_source
+      data:
+        entity_id: media_player.denon
+        source: "TV AUDIO"
+    - service: script.vieraamazonvideo
+    - delay: '00:00:03'
+    - service: script.startamazonvideoapp
+    - service: switch.turn_off
+      entity_id: switch.alexa_bluetooth
