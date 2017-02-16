@@ -74,3 +74,5 @@ certselfsigned
 custom_components
 www
 *.ps1
+configurator.py
+settings.conf

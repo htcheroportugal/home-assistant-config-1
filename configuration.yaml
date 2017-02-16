@@ -149,3 +149,5 @@ alexa: !include alexa.yaml
 rest_command: !include rest_command.yaml
 
 neato: !include neato.yaml
+
+panel_iframe: !include iframe.yaml
