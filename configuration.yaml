@@ -64,7 +64,7 @@ recorder:
   db_url: postgres://@/hass
   purge_days: 14
 # Discover some devices automatically
-# discovery:
+#discovery:
 
 # Allows you to issue voice commands from the frontend in enabled browsers
 conversation:
@@ -100,8 +100,8 @@ logger:
 #notset
 
   default: error
-#  logs:
-#    homeassistant.components.rest_command: debug
+  logs:
+   homeassistant.components.sensor.snmp: fatal
 
 # Track the sun
 sun:

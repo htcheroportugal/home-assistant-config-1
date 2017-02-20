@@ -25,6 +25,13 @@ Klima:
     - device_tracker.ha_lukasp9lite
     - sun.sun
 
+Monitoring:
+  name: Monitoring
+  view: yes
+  entities:
+    - group.fortigate
+    - group.nas
+
 Tools:
   name: Tools
   view: yes
@@ -34,6 +41,7 @@ Tools:
     - device_tracker.ha_sarahp9lite
     - device_tracker.ha_lukasp9lite
     - sun.sun
+
 
 ################################
 ############ Groups###############
@@ -114,3 +122,18 @@ RaumKlima:
     - sensor.luftfeuchte_wohnzimmer
     - sensor.temperatur_esszimmer
     - sensor.luftfeuchte_esszimmer
+
+Fortigate:
+  name: Fortigate
+  entities:
+    - sensor.fortigate_cpu_usage
+    - sensor.fortigate_memory_usage
+    - sensor.fortigate_aktuelle_bandbreite
+
+Nas:
+  name: Nas
+  entities:
+    - sensor.nas_hdd1_smart_errors
+    - sensor.nas_hdd2_smart_errors
+    - sensor.nas_array_status
+    - sensor.nas_luefter_status
