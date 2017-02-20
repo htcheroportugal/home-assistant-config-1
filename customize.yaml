@@ -130,15 +130,3 @@
 - entity_id: sensor.neato_status
   friendly_name: Status
   icon: mdi:pulse
-
-- entity_id: sensor.fortigate_memory_usage,sensor.fortigate_cpu_usage
-  icon: mdi:memory
-
-- entity_id: sensor.nas_hdd1_smart_errors
-  icon: mdi:harddisk
-- entity_id: sensor.nas_hdd2_smart_errors
-  icon: mdi:harddisk
-- entity_id: sensor.nas_array_status
-  icon: mdi:harddisk
-- entity_id: sensor.nas_luefter_status
-  icon: mdi:fan
